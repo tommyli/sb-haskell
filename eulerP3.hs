@@ -1,7 +1,7 @@
 -- The prime factors of 13195 are 5, 7, 13 and 29.
 -- What is the largest prime factor of the number 600851475143 ?
 
-module Main (maxPrimeFactor) where
+module Main where
 
 factorsOf :: Integer -> [Integer]
 factorsOf 0 = []
@@ -31,18 +31,22 @@ isPrime n = length (factorsOf n) == 2
 maxPrimeFactor :: Integer -> Integer
 maxPrimeFactor n = maximum (filter isPrime (factorsOf n))
 
--- main :: IO ()
--- main = putStrLn $ show (maxPrimeFactor 600851475143)
+primesUpTo :: Integer -> [Integer]
+primesUpTo n = filter isPrime [2..n]
+
+main :: IO ()
+--main = putStrLn $ show (maxPrimeFactor 600851475143)
+main = putStrLn $ show (primesUpTo 1000000)
 
 -- Very neat way of testing if a number is prime, found on Internet
 -- http://www.haskell.org/pipermail/haskell-cafe/2005-December/013130.html
 -- and performs very well too.
-prime 1 = False
-prime 2 = True
-prime n = filter (divides n) primes == [] where 
-  numbers = [x | x <- [2..n-1], x*x <= n]
-  primes = filter prime numbers
-divides a b = (mod a b == 0)
+--prime 1 = False
+--prime 2 = True
+--prime n = filter (divides n) primes == [] where 
+--  numbers = [x | x <- [2..n-1], x*x <= n]
+--  primes = filter prime numbers
+--divides a b = (mod a b == 0)
 
 -- Another neat way dealing with primes, from lecturer
 -- returns the (infinite) list of all primes
