@@ -3,9 +3,9 @@ eenyMeeny 1 _ = ([], 1)
 eenyMeeny n k = eenyMeeny' [0..(n-1)] k k []
 
 eenyMeeny' :: [Int] -> Int -> Int -> [Int] -> ([Int], Int)
-eenyMeeny' (n:[]) _ _ winners = (winners, n)
-eenyMeeny' (n:ns) currk k winners =
+eenyMeeny' (n:[]) _ _ sequence = (sequence, n)
+eenyMeeny' (n:ns) currk k sequence =
   if currk == 1 then
-    eenyMeeny' ns k k (winners ++ [n])
+    eenyMeeny' ns k k (sequence ++ [n])
   else
-    eenyMeeny' (ns ++ [n]) (currk - 1) k winners
+    eenyMeeny' (ns ++ [n]) (currk - 1) k sequence
