@@ -1,3 +1,5 @@
+main = print $ eenyMeeny 1000 10
+
 eenyMeeny :: Int -> Int -> ([Int], Int)
 eenyMeeny 1 _ = ([], 1)
 eenyMeeny n k = eenyMeeny' [0..(n-1)] 0 k []
